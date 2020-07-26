@@ -1,4 +1,4 @@
-(venv3) [rpachava@vdesk xpcore]$ python3 main.py 
+(venv3) [rajesh@vdesk home]$ python3 main.py 
 20/07/25 20:13:40 WARN Utils: Your hostname, vdesk.localdomain resolves to a loopback address: 127.0.0.1; using 10.0.2.15 instead (on interface eth0)
 20/07/25 20:13:40 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
 20/07/25 20:13:45 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
@@ -47,4 +47,4 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 | 10|1546300807000| null| null| 37.5|   200.0|  37.5| 37.51|    37.5|      200.0|  null|  null|   12.67|      300.0|
 +---+-------------+-----+-----+-----+--------+------+------+--------+-----------+------+------+--------+-----------+
 
-(venv3) [rpachava@vdesk xpcore]$ 
+(venv3) [rajesh@vdesk home]$
