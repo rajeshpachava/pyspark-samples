@@ -1,0 +1,20 @@
+fill(trades, prices) - Combine the sets of events and fill forward the value columns so that each row has the most recent non-null value for the corresponding id.
+
+Solution:
+
+- Join the events from the two datasets trades and prices
+- On the dataset using withColumn() function and with defining the Window on DataSet, by partitioning with ID and ordering the window results by timestamp, get the the last non-null value if exist using last() function.
+- Using the above solution in the spark streaming application will scale for the data arriving in every micro batch. As explained in the design proposal document.
+
+pivot(trades, prices) - Pivot and fill the columns on the event id so that each row contains a column for each id + column combination where the value is the most recent non-null value for that id. 
+
+Solution: 
+
+- Join the events from the two datasets trades and prices, resulting DataSet is trades_prices
+- Fetch all the uniques IDs from the above joined trades_prices DataSet
+- For every unique ID add the pivot columns and generated the columns with fill values using withColumn() function and with defining the Window on DataSet, by partitioning with ID and ordering the window results by timestamp, get the the last non-null value if exist using last() function.
+- The resulting DataSet from the above operation is merged with the existing trades_prices.
+- Will repeat the above two steps for all IDs.
+
+- The above solution using spark streaming and properly partitioning the data based on ID, would reduce the suffling the data and scale. But pivoting the columns based on ID and filling the non-null values for that id will also work with spark streaming by caching the output of latest event with filled latest non-null values and using them in next micro batch.
+- If we need to do the batch processing iso streaming, we need to stucture the tables with proper partitioning while storing the events in the table, so that the analytics queries for combining and filling the column values with latest non-null values are faster.

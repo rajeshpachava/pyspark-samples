@@ -1,0 +1,50 @@
+(venv3) [rpachava@vdesk xpcore]$ python3 main.py 
+20/07/25 20:13:40 WARN Utils: Your hostname, vdesk.localdomain resolves to a loopback address: 127.0.0.1; using 10.0.2.15 instead (on interface eth0)
+20/07/25 20:13:40 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+20/07/25 20:13:45 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+20/07/25 20:13:47 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
++---+-------------+-----+--------+                                              
+| id|    timestamp|price|quantity|
++---+-------------+-----+--------+
+| 10|1546300800000| 37.5|   100.0|
+| 10|1546300801000|37.51|   100.0|
+| 20|1546300804000|12.67|   300.0|
+| 10|1546300807000| 37.5|   200.0|
++---+-------------+-----+--------+
+
++---+-------------+-----+-----+
+| id|    timestamp|  bid|  ask|
++---+-------------+-----+-----+
+| 10|1546300799000| 37.5|37.51|
+| 10|1546300802000|37.51|37.52|
+| 10|1546300806000| 37.5|37.51|
++---+-------------+-----+-----+
+
++---+-------------+-----+-----+-----+--------+                                  
+| id|    timestamp|  bid|  ask|price|quantity|
++---+-------------+-----+-----+-----+--------+
+| 10|1546300799000| 37.5|37.51| null|    null|
+| 10|1546300800000| 37.5|37.51| 37.5|   100.0|
+| 10|1546300801000| 37.5|37.51|37.51|   100.0|
+| 10|1546300802000|37.51|37.52|37.51|   100.0|
+| 20|1546300804000| null| null|12.67|   300.0|
+| 10|1546300806000| 37.5|37.51|37.51|   100.0|
+| 10|1546300807000| 37.5|37.51| 37.5|   200.0|
++---+-------------+-----+-----+-----+--------+
+
++---+-------------+-----+-----+-----+--------+------+------+--------+-----------+------+------+--------+-----------+
+| id|    timestamp|  bid|  ask|price|quantity|10_bid|10_ask|10_price|10_quantity|20_bid|20_ask|20_price|20_quantity|
++---+-------------+-----+-----+-----+--------+------+------+--------+-----------+------+------+--------+-----------+
+| 10|1546300799000| 37.5|37.51| null|    null|  37.5| 37.51|    null|       null|  null|  null|    null|       null|
+| 10|1546300800000| null| null| 37.5|   100.0|  37.5| 37.51|    37.5|      100.0|  null|  null|    null|       null|
+| 10|1546300801000| null| null|37.51|   100.0|  37.5| 37.51|   37.51|      100.0|  null|  null|    null|       null|
+| 10|1546300802000|37.51|37.52| null|    null| 37.51| 37.52|   37.51|      100.0|  null|  null|    null|       null|
+| 20|1546300804000| null| null|12.67|   300.0| 37.51| 37.52|   37.51|      100.0|  null|  null|   12.67|      300.0|
+| 10|1546300806000| 37.5|37.51| null|    null|  37.5| 37.51|   37.51|      100.0|  null|  null|   12.67|      300.0|
+| 10|1546300807000| null| null| 37.5|   200.0|  37.5| 37.51|    37.5|      200.0|  null|  null|   12.67|      300.0|
++---+-------------+-----+-----+-----+--------+------+------+--------+-----------+------+------+--------+-----------+
+
+(venv3) [rpachava@vdesk xpcore]$ 
